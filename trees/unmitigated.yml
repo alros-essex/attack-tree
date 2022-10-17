@@ -1,0 +1,22 @@
+issues:
+  - id: warehouseKO
+    type: state
+    description: warehouse management malfunction
+    children:
+      - id: malware
+        type: threat
+        description: malware infection
+        children:
+          - id: piracy
+            type: state
+            description: download of pirated software
+          - id: phishing
+            type: state
+            description: infected attachment in a mail
+      - id: hardware
+        type: threat
+        description: hadware failure
+        children:
+          - id: upgrade
+            type: mitigation
+            description: upgrade hardware

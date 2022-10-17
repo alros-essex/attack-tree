@@ -16,7 +16,8 @@ setup(
         "GraVE >= 0.0.3",
         "pydot",
         "graphviz",
-        "tcl"
+        "tcl",
+        "pyyaml"
     ],
     python_requires='>=3.6'
 )
