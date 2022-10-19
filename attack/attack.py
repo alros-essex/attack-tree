@@ -194,6 +194,7 @@ class PopupManager:
     
     def _print_info(self, node:Node):
         print(node)
+        self._toggle_form(True)
         self.input_risk.delete(0,END)
         self.input_risk.insert(0,node.get_risk())
         self.input_impact.delete(0,END)
