@@ -33,7 +33,7 @@ def main():
     toolbar=NavigationToolbar2Tk(figure_canvas, window)
     toolbar.update()
 
-    attack_tree = AttackTree('trees/unmitigated.yml', figure)
+    attack_tree = AttackTree('trees/unmitigated.yml', figure, figure_canvas)
 
     attack_tree.draw()
 

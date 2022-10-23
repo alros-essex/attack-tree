@@ -38,10 +38,22 @@ class AttackTree:
     pos:dict = None
 
     figure:Figure = None
+    figure_canvas:FigureCanvasTkAgg = None
 
-    def __init__(self, file:str, figure:Figure):
+    # 1x1 = 1      00ff00
+    # 6            40ff00
+    # 12           7fff00
+    # 5x5 = 25     ffff00
+    # 50           ff7f00
+    # 75           ff4000
+    # 10x10 = 100  ff0000
+    severity_colors:List[str] = []
+
+    def __init__(self, file:str, figure:Figure, figure_canvas:FigureCanvasTkAgg):
         self.figure = figure
         self.node_list = self._load_nodes(file)
+        self.figure_canvas = figure_canvas
+        self.severity_colors = self._build_color_scale()
 
     def draw(self):
         self._add_all_nodes()
@@ -49,10 +61,9 @@ class AttackTree:
         self.figure.clf()
         axes = self.figure.add_subplot()
         nx.draw_networkx_edges(self.G, ax=axes, pos=self.pos)
-        print(self.all_labels)
-        #all shapes: so^>v<dph8
-        nx.draw_networkx_nodes(self.G, ax=axes, pos=self.pos, node_color=self.color_map, node_shape='o', node_size=300)
+        nx.draw_networkx_nodes(self.G, ax=axes, pos=self.pos, node_color=self.color_map, node_shape='o', node_size=300) #other shapes: so^>v<dph8
         nx.draw_networkx_labels(self.G, ax=axes, pos=self.pos, labels=self.all_labels, font_size=10, font_family='sans-serif')
+        self.figure_canvas.draw()
 
     def find_node(self, x:int, y:int) -> Node | None:
         for node in self.all_nodes:
@@ -61,6 +72,20 @@ class AttackTree:
             if distance < 70:
                 return node
         return None
+
+    def _build_color_scale(self) -> List[str]:
+        severity_colors:List[str] = ['#7f7fff']
+        red:int = 0
+        green:int = 255
+        for i in range(1, 101):
+            if i > 25:
+                red = 255
+                green = green - int(255/75)
+            else:
+                green = 255
+                red = red + int(255/25)
+            severity_colors.append("#{red:02x}{green:02x}00".format(red=red, green=green))
+        return severity_colors
 
     def _add_all_nodes(self):
         self._reset()
@@ -74,15 +99,19 @@ class AttackTree:
         self.color_map.clear()
 
     def _add_node(self, node:Node, father:Node = None):
-        self.all_labels[node.id] = str(node.risk)
+        self.all_labels[node.id] = node.id
         self.G.add_node(node.id)
         self.all_nodes.append(node)
         self.node_sizes.append(500)
-        self.color_map.append(node_colors[node.type])
+        self.color_map.append(self._calculate_color(node))
         if father is not None:
             self.G.add_edge(father.id, node.id)
         for child in node.children:
             self._add_node(child, node)
+
+    def _calculate_color(self, node:Node):
+        severity = node.get_risk() * node.get_impact()
+        return  self.severity_colors[severity]
 
     def _load_nodes(self, file:str) -> List[Node]:
         def parse_nodes(issues) -> List[Node]:
