@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-from .node import Node
+from node import Node
 
 class AttackTree:
     """Responsible to draw the attack tree on screen"""
@@ -31,14 +31,12 @@ class AttackTree:
         -------
         None
         """
-        self.figure:Figure = figure
         self.root:Node = root
+        self.figure:Figure = figure
         self.figure_canvas:FigureCanvasTkAgg = figure_canvas
         self.graph:Digraph = nx.DiGraph()
         self.all_nodes:List[str] = []
         self.all_labels:dict = {}
-        self.color_map:List[str] = []
-        self.node_sizes:List[str] = []
         self.pos:dict = None
 
     def draw(self) -> None:
@@ -53,7 +51,7 @@ class AttackTree:
         -------
         None
         """
-        self._add_all_nodes()
+        color_map = self._add_all_nodes()
         self.pos=graphviz_layout(self.graph,prog="dot")
         self.figure.clf()
         axes = self.figure.add_subplot()
@@ -62,7 +60,7 @@ class AttackTree:
         nx.draw_networkx_nodes(self.graph,
             ax=axes,
             pos=self.pos,
-            node_color=self.color_map,
+            node_color=color_map,
             node_shape='o',#other shapes: so^>v<dph8
             node_size=300)
         nx.draw_networkx_labels(self.graph,
@@ -95,7 +93,7 @@ class AttackTree:
                 return node
         return None
 
-    def _add_all_nodes(self) -> None:
+    def _add_all_nodes(self) -> List[str]:
         """
         Convenience method to populate the tree
 
@@ -105,10 +103,10 @@ class AttackTree:
 
         Returns
         -------
-        None
+        List[str] : color map
         """
         self._reset()
-        self._add_node(self.root)
+        return self._add_node(self.root)
 
     def _reset(self) -> None:
         """
@@ -125,9 +123,8 @@ class AttackTree:
         self.graph.clear()
         self.figure.clear()
         plt.clf()
-        self.color_map.clear()
 
-    def _add_node(self, node:Node, father:Node = None) -> None:
+    def _add_node(self, node:Node, color_map:List[str] = None, father:Node = None) -> List[str]:
         """
         Recursively adds nodes to build the tree
 
@@ -135,22 +132,27 @@ class AttackTree:
         ----------
         node : Node
             current root
+        color_map : List[str]
+            current state of the color map
         father : Node
             optional father (None by default)
 
         Returns
         -------
-        None
+        List[str] :
+            color map
         """
+        if color_map is None:
+            color_map = []
         self.all_labels[node.get_id()] = node.get_id()
         self.graph.add_node(node.get_id())
         self.all_nodes.append(node)
-        self.node_sizes.append(500)
-        self.color_map.append(self._calculate_color(node))
+        color_map.append(self._calculate_color(node))
         if father is not None:
             self.graph.add_edge(father.get_id(), node.get_id())
         for child in node.get_children():
-            self._add_node(child, node)
+            self._add_node(child, color_map=color_map, father=node)
+        return color_map
 
     def _calculate_color(self, node:Node) -> str:
         """

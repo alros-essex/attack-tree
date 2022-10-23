@@ -2,7 +2,7 @@
 from __future__ import annotations
 from typing import List
 import yaml
-from .node import Node
+from node import Node
 
 class FileParser:
     """Utility to parse the attack trees"""
@@ -24,12 +24,12 @@ class FileParser:
         with open(file, "r", encoding='UTF8') as stream:
             try:
                 data = yaml.safe_load(stream)
-                return self._parse_nodes(data['issues'])
+                return self.parse_nodes(data['issues'])
             except yaml.YAMLError as exc:
                 print(exc)
                 return None
 
-    def _parse_nodes(self, issues) -> List[Node]:
+    def parse_nodes(self, issues) -> List[Node]:
         """
         Parses all the nodes
 
@@ -45,7 +45,7 @@ class FileParser:
         """
         nodes = []
         for issue in issues:
-            children = self._parse_nodes(issue['children']) if 'children' in issue else []
+            children = self.parse_nodes(issue['children']) if 'children' in issue else []
             nodes.append(Node(
                 node_id=issue['id'],
                 description=issue['description'],

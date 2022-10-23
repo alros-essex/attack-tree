@@ -1,7 +1,7 @@
 """FormManager"""
 from tkinter import Label, HORIZONTAL, Scale, Tk
-from .attack_tree import AttackTree
-from .node import Node
+from attack_tree import AttackTree
+from node import Node
 
 class FormManager:
     """Class managing the user's input"""
@@ -52,7 +52,7 @@ class FormManager:
         self.input_impact.pack(pady = 0)
 
         # disable
-        self._toggle_form(False)
+        self.toggle_form(False)
 
     def on_click(self, event) -> None:
         """
@@ -72,9 +72,9 @@ class FormManager:
             self.current_node = node
             self._print_info(node)
         else:
-            self._toggle_form(False)
+            self.toggle_form(False)
 
-    def _toggle_form(self, active:bool) -> None:
+    def toggle_form(self, active:bool) -> None:
         """
         Activates/deactivates the form
 
@@ -121,8 +121,8 @@ class FormManager:
         -------
         None
         """
-        self._toggle_form(True)
+        self.toggle_form(True)
         self.input_risk.set(node.get_risk())
         self.input_impact.set(node.get_risk())
         self.details_label.config(text = node.get_description())
-        self._toggle_form(node.is_leaf())
+        self.toggle_form(node.is_leaf())

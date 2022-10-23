@@ -1,14 +1,10 @@
 """Summary"""
 from __future__ import annotations
 from typing import List
-
 import numpy as np
-
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
-
-from .node import Node
+from node import Node
 
 class Summary:
     """Manages the summary tab"""
@@ -49,7 +45,7 @@ class Summary:
         self.figure.clf()
         plot = self.figure.add_subplot()
 
-        (pos_x, pos_y, sizes) = self._process_nodes()
+        (pos_x, pos_y, sizes) = self.get_summary()
 
         plot.set_xlabel('Impact')
         plot.set_ylabel('Risk')
@@ -59,7 +55,7 @@ class Summary:
         plot.axis([-1, 11, -1, 11])
         self.figure_canvas.draw()
 
-    def _process_nodes(self):
+    def get_summary(self):
         """
         Calculates the data for the chart
 

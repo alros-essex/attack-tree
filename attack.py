@@ -8,11 +8,11 @@ from tkinter.ttk import Notebook,Frame
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolbar2Tk
 
-from .attack_tree import AttackTree
-from .node import Node
-from .form_manager import FormManager
-from .file_parser import FileParser
-from .summary import Summary
+from attack_tree import AttackTree
+from node import Node
+from form_manager import FormManager
+from file_parser import FileParser
+from summary import Summary
 
 class Attack:
     """Class with the application's core"""
@@ -30,9 +30,9 @@ class Attack:
         None
         """
         node_list:List[Node] = FileParser().load_nodes(file='trees/unmitigated.yml')
-        self._start_gui(node_list)
+        self.start_gui(node_list)
 
-    def _start_gui(self, node_list:List[Node]) -> None:
+    def start_gui(self, node_list:List[Node]) -> None:
         """
         Creates the application's GUI
 
@@ -128,6 +128,5 @@ class Attack:
 
         figure_canvas.mpl_connect('button_press_event', form_manager.on_click)
 
-def main():
-    """Start the application"""
+if __name__ == "__main__":
     Attack().load_application()

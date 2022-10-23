@@ -1,24 +1,4 @@
-************* Module attack
-attack/attack.py:11:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:12:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:13:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:14:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:15:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:17:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-************* Module attack_tree
-attack/attack_tree.py:12:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack_tree.py:14:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
-************* Module file_parser
-attack/file_parser.py:5:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/file_parser.py:7:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-************* Module form_manager
-attack/form_manager.py:3:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/form_manager.py:4:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/form_manager.py:6:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-************* Module summary
-attack/summary.py:11:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/summary.py:13:0: R0903: Too few public methods (1/2) (too-few-public-methods)
 
-------------------------------------------------------------------
-Your code has been rated at 7.76/10 (previous run: 7.71/10, +0.04)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.80/10, +0.20)
 

@@ -1,3 +1,4 @@
+"""setup tool"""
 from setuptools import setup, find_packages
 
 ### graphviz is also required
