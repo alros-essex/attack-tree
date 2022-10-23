@@ -1,6 +1,5 @@
 from __future__ import annotations
 from cProfile import label
-import imp
 from tokenize import Pointfloat
 from graphviz import Digraph
 from matplotlib.axes import Axes
@@ -12,10 +11,6 @@ import numpy as np
 import matplotlib as mpl
 
 from typing import List
-from enum import Enum
-import json
-
-import tkinter as tk
 from tkinter import *
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (
@@ -23,8 +18,7 @@ from matplotlib.backends.backend_tkagg import (
     NavigationToolbar2Tk
 )
 
-from .Node import Node, NodeType
-
+from .node import Node, NodeType
 
 class Summary:
     def __init__(self, node_list:List[Node], figure:Figure, figure_canvas:FigureCanvasTkAgg):

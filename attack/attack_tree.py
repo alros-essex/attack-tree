@@ -16,8 +16,7 @@ from matplotlib.backends.backend_tkagg import (
     NavigationToolbar2Tk
 )
 
-from .Node import Node, NodeType
-
+from .node import Node, NodeType
 
 node_colors = {
     NodeType.state: '#b8b8b8',
@@ -45,8 +44,18 @@ class AttackTree:
         axes = self.figure.add_subplot()
 
         nx.draw_networkx_edges(self.G, ax=axes, pos=self.pos)
-        nx.draw_networkx_nodes(self.G, ax=axes, pos=self.pos, node_color=self.color_map, node_shape='o', node_size=300) #other shapes: so^>v<dph8
-        nx.draw_networkx_labels(self.G, ax=axes, pos=self.pos, labels=self.all_labels, font_size=10, font_family='sans-serif')
+        nx.draw_networkx_nodes(self.G,
+            ax=axes,
+            pos=self.pos,
+            node_color=self.color_map,
+            node_shape='o',#other shapes: so^>v<dph8 
+            node_size=300)
+        nx.draw_networkx_labels(self.G, 
+            ax=axes,
+            pos=self.pos,
+            labels=self.all_labels,
+            font_size=10,
+            font_family='sans-serif')
         self.figure_canvas.draw()
 
     def find_node(self, x:int, y:int) -> Node | None:
@@ -80,5 +89,7 @@ class AttackTree:
 
     def _calculate_color(self, node:Node):
         # color maps https://matplotlib.org/stable/tutorials/colors/colormaps.html
-        (red,green,blue,_) = mpl.colormaps['gist_ncar'](0.43+float(node.get_severity())/100*0.42)
-        return "#{red:02x}{green:02x}{blue:02x}".format(red=int(red*255), green=int(green*255), blue=int(blue*255))
+        (red,green,blue,_) = mpl.colormaps['gist_ncar'](
+            0.43+float(node.get_severity())/100*0.42)
+        return "#{red:02x}{green:02x}{blue:02x}".format(
+            red=int(red*255), green=int(green*255), blue=int(blue*255))

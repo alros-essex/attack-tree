@@ -1,14 +1,32 @@
+"""FormManager"""
 from __future__ import annotations
 
 from typing import List
 
 from tkinter import *
-from .AttackTree import AttackTree
-from .Node import Node
+from .attack_tree import AttackTree
+from .node import Node
 
 class FormManager:
+    """Class managing the user's input"""
 
-    def __init__(self, attack_tree:AttackTree, window:Tk, on_update) -> None:
+    def __init__(self, attack_tree:AttackTree, window:Tk, on_update):
+        """
+        Creates the instance
+
+        Parameters
+        ----------
+        attack_tree : AttackTree
+            attack tree modeling with the vulneratbilies graph
+        window : Tk
+            Tk window
+        on_update :
+            function to be called on form update
+
+        Returns
+        -------
+        None
+        """
         self.attack_tree = attack_tree
         self.window = window
         self.on_update=on_update
@@ -29,7 +47,19 @@ class FormManager:
         # disable
         self._toggle_form(False)
 
-    def onClick(self, event):
+    def onClick(self, event) -> None:
+        """
+        Callback reacting to clicks on the window
+
+        Parameters
+        ----------
+        event :
+            Tk click event
+        
+        Returns
+        -------
+        None
+        """
         node:Node = self.attack_tree.find_node(event.xdata, event.ydata)
         if node is not None:
             self.current_node = node
@@ -37,17 +67,53 @@ class FormManager:
         else:
             self._toggle_form(False)
 
-    def _toggle_form(self, active:bool):
+    def _toggle_form(self, active:bool) -> None:
+        """
+        Activates/deactivates the form
+
+        Parameters
+        ----------
+        activate : bool
+            true to activate, false otherwise
+        
+        Returns
+        -------
+        None
+        """
         self.input_risk.config(state=("normal" if active else "disabled"))
         self.input_impact.config(state=("normal" if active else "disabled"))
 
-    def _store_risk(self, e):
+    def _store_risk(self, _) -> None:
+        """
+        Updates the node with a new risk
+
+        Parameters
+        ----------
+        _ : event
+            ignored
+        
+        Returns
+        -------
+        None
+        """
         self.current_node.set_risk(int(self.input_risk.get()))
         self.current_node.set_impact(int(self.input_impact.get()))
         self.attack_tree.draw()
         self.on_update()
     
-    def _print_info(self, node:Node):
+    def _print_info(self, node:Node) -> None:
+        """
+        Set up the form
+
+        Parameters
+        ----------
+        node : Node
+            selected node
+        
+        Returns
+        -------
+        None
+        """
         self._toggle_form(True)
         self.input_risk.set(node.get_risk())
         self.input_impact.set(node.get_risk())

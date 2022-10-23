@@ -4,7 +4,7 @@ import yaml
 
 from typing import List
 
-from .Node import Node, NodeType
+from .node import Node, NodeType
 
 class FileParser:
     """Utility to parse the attack trees"""
@@ -16,8 +16,13 @@ class FileParser:
 
         Parameters
         ----------
-        file : filename
+        file : str
             The file containing the attack tree
+
+        Returns
+        -------
+        List[Node] :
+            The loaded nodes
         """
         with open(file, "r", encoding='UTF8') as stream:
             try:
@@ -35,6 +40,11 @@ class FileParser:
         ----------
         file : yml object
             object loaded with the yaml framework
+
+        Returns
+        -------
+        List[Node] :
+            The parsed nodes
         """
         nodes = []
         for issue in issues:
