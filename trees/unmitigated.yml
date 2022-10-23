@@ -20,3 +20,24 @@ issues:
           - id: upgrade
             type: mitigation
             description: upgrade hardware
+  - id: warehouseKO2
+    type: state
+    description: warehouse management malfunction
+    children:
+      - id: malware2
+        type: threat
+        description: malware infection
+        children:
+          - id: piracy2
+            type: state
+            description: download of pirated software
+          - id: phishing2
+            type: state
+            description: infected attachment in a mail
+      - id: hardware2
+        type: threat
+        description: hadware failure
+        children:
+          - id: upgrade2
+            type: mitigation
+            description: upgrade hardware
