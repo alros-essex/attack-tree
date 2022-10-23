@@ -1,17 +1,16 @@
-"""attack"""
+"""Attack"""
 from __future__ import annotations
 
 from typing import List
 
 import tkinter as tk
-from tkinter import *
+from tkinter.ttk import Notebook,Frame
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolbar2Tk
 
 from .attack_tree import AttackTree
 from .node import Node
 from .form_manager import FormManager
-from tkinter.ttk import Notebook,Frame
 from .file_parser import FileParser
 from .summary import Summary
 
@@ -107,7 +106,7 @@ class Attack:
         None
         """
         tab = Frame(tab_control)
-        tab_control.add(tab, text=root.id)
+        tab_control.add(tab, text=root.get_id())
 
         figure = Figure(figsize=(6, 4), dpi=100)
         figure_canvas = FigureCanvasTkAgg(figure, tab)

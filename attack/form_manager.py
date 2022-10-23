@@ -124,5 +124,5 @@ class FormManager:
         self._toggle_form(True)
         self.input_risk.set(node.get_risk())
         self.input_impact.set(node.get_risk())
-        self.details_label.config(text = node.description)
+        self.details_label.config(text = node.get_description())
         self._toggle_form(node.is_leaf())

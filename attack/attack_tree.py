@@ -1,15 +1,11 @@
 """AttackTree"""
 from __future__ import annotations
-from cProfile import label
-from tokenize import Pointfloat
+from typing import List
 from graphviz import Digraph
 import networkx as nx
-import matplotlib.pyplot as plt
 from networkx.drawing.nx_pydot import graphviz_layout
 import matplotlib as mpl
-
-from typing import List
-
+import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
@@ -93,8 +89,8 @@ class AttackTree:
         Node, if found, or None
         """
         for node in self.all_nodes:
-            id = node.id
-            distance = pow(pos_x-self.pos[id][0],2)+pow(pos_y-self.pos[id][1],2)
+            node_id = node.get_id()
+            distance = pow(pos_x-self.pos[node_id][0],2)+pow(pos_y-self.pos[node_id][1],2)
             if distance < 70:
                 return node
         return None
@@ -146,14 +142,14 @@ class AttackTree:
         -------
         None
         """
-        self.all_labels[node.id] = node.id
-        self.graph.add_node(node.id)
+        self.all_labels[node.get_id()] = node.get_id()
+        self.graph.add_node(node.get_id())
         self.all_nodes.append(node)
         self.node_sizes.append(500)
         self.color_map.append(self._calculate_color(node))
         if father is not None:
-            self.graph.add_edge(father.id, node.id)
-        for child in node.children:
+            self.graph.add_edge(father.get_id(), node.get_id())
+        for child in node.get_children():
             self._add_node(child, node)
 
     def _calculate_color(self, node:Node) -> str:
@@ -172,5 +168,4 @@ class AttackTree:
         # color maps https://matplotlib.org/stable/tutorials/colors/colormaps.html
         (red,green,blue,_) = mpl.colormaps['gist_ncar'](
             0.43+float(node.get_severity())/100*0.42)
-        return "#{red:02x}{green:02x}{blue:02x}".format(
-            red=int(red*255), green=int(green*255), blue=int(blue*255))
+        return f"#{int(red*255):02x}{int(green*255):02x}{int(blue*255):02x}"

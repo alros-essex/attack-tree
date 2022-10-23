@@ -2,8 +2,6 @@
 from __future__ import annotations
 from typing import List
 
-from graphviz import Digraph
-import networkx as nx
 import numpy as np
 
 from matplotlib.figure import Figure

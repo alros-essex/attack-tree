@@ -5,13 +5,13 @@ from typing import List
 class Node:
     """Represents a node in the attack tree"""
 
-    def __init__(self, id:str, description:str, children:List[Node]=None):
+    def __init__(self, node_id:str, description:str, children:List[Node]=None):
         """
         Builds an instance
 
         Parameters
         ----------
-        id : str
+        node_id : str
             node id
         description : str
             detailed description
@@ -22,11 +22,41 @@ class Node:
         -------
         None
         """
-        self.id=id
-        self.description=description
-        self.children=children if not None else []
-        self.risk = 0
-        self.impact = 0
+        self._node_id = node_id
+        self._description=description
+        self._children=children if not None else []
+        self._risk = 0
+        self._impact = 0
+
+    def get_id(self):
+        """
+        Returns the node's id
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        str:
+            node's id
+        """
+        return self._node_id
+
+    def get_description(self) -> str:
+        """
+        Returns the node's description
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        str:
+            node's description
+        """
+        return self._description
 
     def is_leaf(self) -> bool:
         """
@@ -41,7 +71,7 @@ class Node:
         bool:
             True if it's a leaf
         """
-        return self.children is None or len(self.children)==0
+        return self._children is None or len(self._children)==0
 
     def get_risk(self) -> int:
         """
@@ -57,7 +87,7 @@ class Node:
             Risk associated with the node
         """
         if self.is_leaf():
-            return self.risk
+            return self._risk
         (max_risk, _) = self._get_children_risk_and_impact()
         return max_risk
 
@@ -75,7 +105,7 @@ class Node:
             Impact associated with the node
         """
         if self.is_leaf():
-            return self.impact
+            return self._impact
         (_, max_impact) = self._get_children_risk_and_impact()
         return max_impact
 
@@ -94,6 +124,22 @@ class Node:
         """
         return self.get_impact() * self.get_risk()
 
+    def get_children(self) -> List[Node]:
+        """
+        Returns the children of the node
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        List[Node]:
+            node's children
+        """
+        return self._children
+
+
     def _get_children_risk_and_impact(self):
         """
         Returns a tuple with the maximum risk and impact among the children
@@ -109,7 +155,7 @@ class Node:
         """
         max_risk = 0
         max_impact = 0
-        for child in self.children:
+        for child in self._children:
             risk = child.get_risk()
             impact = child.get_impact()
             if risk*impact > max_risk*max_impact:
@@ -130,7 +176,7 @@ class Node:
         -------
         None
         """
-        self.risk = risk
+        self._risk = risk
 
     def set_impact(self, impact:int):
         """
@@ -145,5 +191,4 @@ class Node:
         -------
         None
         """
-        self.impact = impact
-
+        self._impact = impact

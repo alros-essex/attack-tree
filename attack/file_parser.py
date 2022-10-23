@@ -47,7 +47,7 @@ class FileParser:
         for issue in issues:
             children = self._parse_nodes(issue['children']) if 'children' in issue else []
             nodes.append(Node(
-                id=issue['id'],
+                node_id=issue['id'],
                 description=issue['description'],
                 children=children))
         return nodes

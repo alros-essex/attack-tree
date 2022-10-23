@@ -1,23 +1,13 @@
 ************* Module attack
-attack/attack.py:7:0: W0401: Wildcard import tkinter (wildcard-import)
 attack/attack.py:11:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/attack.py:12:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/attack.py:13:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+attack/attack.py:14:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/attack.py:15:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:16:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:18:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-attack/attack.py:14:0: C0411: standard import "from tkinter.ttk import Notebook, Frame" should be placed before "from matplotlib.figure import Figure" (wrong-import-order)
-attack/attack.py:7:0: W0614: Unused import(s) enum, sys, types, TclError, re, wantobjects, TkVersion, TclVersion, READABLE, WRITABLE, EXCEPTION, EventType, Event, NoDefaultRoot, Variable, StringVar, IntVar, DoubleVar, BooleanVar, mainloop, getint, getdouble, getboolean, Misc, CallWrapper, XView, YView, Wm, Tk, Tcl, Pack, Place, Grid, BaseWidget, Widget, Toplevel, Button, Canvas, Checkbutton, Entry, Label, Listbox, Menu, Menubutton, Message, Radiobutton, Scale, Scrollbar, Text, OptionMenu, Image, PhotoImage, BitmapImage, image_names, image_types, Spinbox, LabelFrame, PanedWindow, NO, FALSE, OFF, YES, TRUE, ON, N, S, W, E, NW, SW, NE, SE, NS, EW, NSEW, CENTER, NONE, X, Y, BOTH, LEFT, TOP, RIGHT, BOTTOM, RAISED, SUNKEN, FLAT, RIDGE, GROOVE, SOLID, HORIZONTAL, VERTICAL, NUMERIC, CHAR, WORD, BASELINE, INSIDE, OUTSIDE, SEL, SEL_FIRST, SEL_LAST, END, INSERT, CURRENT, ANCHOR, ALL, NORMAL, DISABLED, ACTIVE, HIDDEN, CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR, SINGLE, BROWSE, MULTIPLE, EXTENDED, DOTBOX, UNDERLINE, PIESLICE, CHORD, ARC, FIRST, LAST, BUTT, PROJECTING, ROUND, BEVEL, MITER, MOVETO, SCROLL, UNITS and PAGES from wildcard import of tkinter (unused-wildcard-import)
+attack/attack.py:17:0: R0903: Too few public methods (1/2) (too-few-public-methods)
 ************* Module attack_tree
-attack/attack_tree.py:16:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack_tree.py:18:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
-attack/attack_tree.py:96:12: W0622: Redefining built-in 'id' (redefined-builtin)
-attack/attack_tree.py:96:12: C0103: Variable name "id" doesn't conform to snake_case naming style (invalid-name)
-attack/attack_tree.py:175:15: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-attack/attack_tree.py:11:0: C0411: standard import "from typing import List" should be placed before "from graphviz import Digraph" (wrong-import-order)
-attack/attack_tree.py:9:0: C0412: Imports from package matplotlib are not grouped (ungrouped-imports)
-attack/attack_tree.py:3:0: W0611: Unused label imported from cProfile (unused-import)
-attack/attack_tree.py:4:0: W0611: Unused Pointfloat imported from tokenize (unused-import)
+attack/attack_tree.py:12:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+attack/attack_tree.py:14:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
 ************* Module file_parser
 attack/file_parser.py:5:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/file_parser.py:7:0: R0903: Too few public methods (1/2) (too-few-public-methods)
@@ -25,17 +15,10 @@ attack/file_parser.py:7:0: R0903: Too few public methods (1/2) (too-few-public-m
 attack/form_manager.py:3:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/form_manager.py:4:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/form_manager.py:6:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-************* Module node
-attack/node.py:149:0: C0305: Trailing newlines (trailing-newlines)
-attack/node.py:25:8: C0103: Attribute name "id" doesn't conform to snake_case naming style (invalid-name)
-attack/node.py:8:23: C0103: Argument name "id" doesn't conform to snake_case naming style (invalid-name)
-attack/node.py:8:23: W0622: Redefining built-in 'id' (redefined-builtin)
 ************* Module summary
-attack/summary.py:13:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/summary.py:15:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-attack/summary.py:5:0: W0611: Unused Digraph imported from graphviz (unused-import)
-attack/summary.py:6:0: W0611: Unused networkx imported as nx (unused-import)
+attack/summary.py:11:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+attack/summary.py:13:0: R0903: Too few public methods (1/2) (too-few-public-methods)
 
 ------------------------------------------------------------------
-Your code has been rated at 7.09/10 (previous run: 7.04/10, +0.05)
+Your code has been rated at 7.76/10 (previous run: 7.71/10, +0.04)
 
