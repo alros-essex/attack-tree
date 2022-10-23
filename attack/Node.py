@@ -1,3 +1,4 @@
+"""Node"""
 from __future__ import annotations
 from typing import List
 from enum import Enum
@@ -7,7 +8,6 @@ class NodeType(Enum):
     state = 0
     threat = 1
     mitigation = 2
-
 
 class Node:
     id:str

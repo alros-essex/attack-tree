@@ -35,13 +35,23 @@ class FormManager:
         Label(self.window, text = "node details").pack(pady = 10)
         self.details_label = Label(self.window, text = "", fg = "#bbbbbb")
         self.details_label.pack(pady = 10)
-        
+
         # form
         Label(self.window, text="risk").pack(pady = 0)
-        self.input_risk = Scale(self.window, from_=0, to=10, length=200, orient=HORIZONTAL, command=self._store_risk)
+        self.input_risk = Scale(self.window, 
+            from_=0,
+            to=10,
+            length=200,
+            orient=HORIZONTAL,
+            command=self._store_risk)
         self.input_risk.pack(pady = 0)
         Label(self.window, text="impact").pack(pady = 0)
-        self.input_impact = Scale(self.window, from_=0, to=10, length=200, orient=HORIZONTAL, command=self._store_risk)
+        self.input_impact = Scale(self.window,
+            from_=0,
+            to=10,
+            length=200,
+            orient=HORIZONTAL,
+            command=self._store_risk)
         self.input_impact.pack(pady = 0)
 
         # disable

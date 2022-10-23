@@ -1,3 +1,4 @@
+"""AttackTree"""
 from __future__ import annotations
 from cProfile import label
 from tokenize import Pointfloat
@@ -25,8 +26,25 @@ node_colors = {
 }
 
 class AttackTree:
+    """Responsible to draw the attack tree on screen"""
 
     def __init__(self, root:Node, figure:Figure, figure_canvas:FigureCanvasTkAgg):
+        """
+        Builds the instance
+
+        Parameters
+        ----------
+        root : Node
+            Root node of the tree
+        figure : Figure
+            Tk Figure to draw the tree
+        figure_canvas: FigureCanvasTkAgg
+            Tk Canvas to draw the tree
+
+        Returns
+        -------
+        None
+        """
         self.figure:Figure = figure
         self.root:Node = root
         self.figure_canvas:FigureCanvasTkAgg = figure_canvas
@@ -37,7 +55,18 @@ class AttackTree:
         self.node_sizes:List[str] = []
         self.pos:dict = None
 
-    def draw(self):
+    def draw(self) -> None:
+        """
+        Draws or refreshes the tree
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         self._add_all_nodes()
         self.pos=graphviz_layout(self.G,prog="dot")
         self.figure.clf()
@@ -59,6 +88,20 @@ class AttackTree:
         self.figure_canvas.draw()
 
     def find_node(self, x:int, y:int) -> Node | None:
+        """
+        Finds a node given it's position on screen
+
+        Parameters
+        ----------
+        x : int
+            coordinate
+        y : int
+            coordinate
+
+        Returns
+        -------
+        Node, if found, or None
+        """
         for node in self.all_nodes:
             id = node.id
             distance = pow(x-self.pos[id][0],2)+pow(y-self.pos[id][1],2)
@@ -66,17 +109,53 @@ class AttackTree:
                 return node
         return None
 
-    def _add_all_nodes(self):
+    def _add_all_nodes(self) -> None:
+        """
+        Convenience method to populate the tree
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         self._reset()
         self._add_node(self.root)
     
-    def _reset(self):
+    def _reset(self) -> None:
+        """
+        Convenience method to clean the screen
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         self.G.clear()
         self.figure.clear()
         plt.clf()
         self.color_map.clear()
 
-    def _add_node(self, node:Node, father:Node = None):
+    def _add_node(self, node:Node, father:Node = None) -> None:
+        """
+        Recursively adds nodes to build the tree
+
+        Parameters
+        ----------
+        node : Node
+            current root
+        father : Node
+            optional father (None by default)
+
+        Returns
+        -------
+        None
+        """
         self.all_labels[node.id] = node.id
         self.G.add_node(node.id)
         self.all_nodes.append(node)
@@ -87,7 +166,19 @@ class AttackTree:
         for child in node.children:
             self._add_node(child, node)
 
-    def _calculate_color(self, node:Node):
+    def _calculate_color(self, node:Node) -> str:
+        """
+        Convenience method to determine the colour 
+
+        Parameters
+        ----------
+        node : Node
+            node to be examined
+
+        Returns
+        -------
+        str representing the colour on a subset of the gist_ncar color scheme
+        """
         # color maps https://matplotlib.org/stable/tutorials/colors/colormaps.html
         (red,green,blue,_) = mpl.colormaps['gist_ncar'](
             0.43+float(node.get_severity())/100*0.42)

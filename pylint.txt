@@ -5,8 +5,6 @@ attack/attack.py:15:0: E0402: Attempted relative import beyond top-level package
 attack/attack.py:16:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/attack.py:18:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/attack.py:19:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/attack.py:65:47: C0103: Argument name "tabControl" doesn't conform to snake_case naming style (invalid-name)
-attack/attack.py:135:8: C0103: Variable name "formManager" doesn't conform to snake_case naming style (invalid-name)
 attack/attack.py:21:0: R0903: Too few public methods (1/2) (too-few-public-methods)
 attack/attack.py:17:0: C0411: standard import "from tkinter.ttk import Notebook, Frame" should be placed before "from matplotlib.figure import Figure" (wrong-import-order)
 attack/attack.py:7:0: W0614: Unused import(s) enum, sys, types, TclError, re, wantobjects, TkVersion, TclVersion, READABLE, WRITABLE, EXCEPTION, EventType, Event, NoDefaultRoot, Variable, StringVar, IntVar, DoubleVar, BooleanVar, mainloop, getint, getdouble, getboolean, Misc, CallWrapper, XView, YView, Wm, Tk, Tcl, Pack, Place, Grid, BaseWidget, Widget, Toplevel, Button, Canvas, Checkbutton, Entry, Label, Listbox, Menu, Menubutton, Message, Radiobutton, Scale, Scrollbar, Text, OptionMenu, Image, PhotoImage, BitmapImage, image_names, image_types, Spinbox, LabelFrame, PanedWindow, NO, FALSE, OFF, YES, TRUE, ON, N, S, W, E, NW, SW, NE, SE, NS, EW, NSEW, CENTER, NONE, X, Y, BOTH, LEFT, TOP, RIGHT, BOTTOM, RAISED, SUNKEN, FLAT, RIDGE, GROOVE, SOLID, HORIZONTAL, VERTICAL, NUMERIC, CHAR, WORD, BASELINE, INSIDE, OUTSIDE, SEL, SEL_FIRST, SEL_LAST, END, INSERT, CURRENT, ANCHOR, ALL, NORMAL, DISABLED, ACTIVE, HIDDEN, CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR, SINGLE, BROWSE, MULTIPLE, EXTENDED, DOTBOX, UNDERLINE, PIESLICE, CHORD, ARC, FIRST, LAST, BUTT, PROJECTING, ROUND, BEVEL, MITER, MOVETO, SCROLL, UNITS and PAGES from wildcard import of tkinter (unused-wildcard-import)
@@ -41,25 +39,24 @@ attack/file_parser.py:50:21: E1133: Non-iterable value issues is used in an iter
 attack/file_parser.py:9:0: R0903: Too few public methods (1/2) (too-few-public-methods)
 attack/file_parser.py:5:0: C0411: standard import "from typing import List" should be placed before "import yaml" (wrong-import-order)
 ************* Module form_manager
-attack/form_manager.py:20:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:23:0: C0301: Line too long (117/100) (line-too-long)
-attack/form_manager.py:26:0: C0301: Line too long (119/100) (line-too-long)
-attack/form_manager.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:55:0: C0304: Final newline missing (missing-final-newline)
-attack/form_manager.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-attack/form_manager.py:5:0: W0401: Wildcard import tkinter (wildcard-import)
-attack/form_manager.py:6:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+attack/form_manager.py:38:0: C0303: Trailing whitespace (trailing-whitespace)
+attack/form_manager.py:41:0: C0301: Line too long (117/100) (line-too-long)
+attack/form_manager.py:44:0: C0301: Line too long (119/100) (line-too-long)
+attack/form_manager.py:58:0: C0303: Trailing whitespace (trailing-whitespace)
+attack/form_manager.py:78:0: C0303: Trailing whitespace (trailing-whitespace)
+attack/form_manager.py:94:0: C0303: Trailing whitespace (trailing-whitespace)
+attack/form_manager.py:103:0: C0303: Trailing whitespace (trailing-whitespace)
+attack/form_manager.py:112:0: C0303: Trailing whitespace (trailing-whitespace)
+attack/form_manager.py:121:0: C0304: Final newline missing (missing-final-newline)
+attack/form_manager.py:6:0: W0401: Wildcard import tkinter (wildcard-import)
 attack/form_manager.py:7:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/form_manager.py:9:0: C0115: Missing class docstring (missing-class-docstring)
-attack/form_manager.py:32:4: C0116: Missing function or method docstring (missing-function-docstring)
-attack/form_manager.py:32:4: C0103: Method name "onClick" doesn't conform to snake_case naming style (invalid-name)
-attack/form_manager.py:44:26: C0103: Argument name "e" doesn't conform to snake_case naming style (invalid-name)
-attack/form_manager.py:44:26: W0613: Unused argument 'e' (unused-argument)
-attack/form_manager.py:55:26: R1719: The if expression can be replaced with 'bool(test)' (simplifiable-if-expression)
-attack/form_manager.py:35:12: W0201: Attribute 'current_node' defined outside __init__ (attribute-defined-outside-init)
-attack/form_manager.py:9:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-attack/form_manager.py:3:0: W0611: Unused List imported from typing (unused-import)
-attack/form_manager.py:5:0: W0614: Unused import(s) enum, sys, types, TclError, re, wantobjects, TkVersion, TclVersion, READABLE, WRITABLE, EXCEPTION, EventType, Event, NoDefaultRoot, Variable, StringVar, IntVar, DoubleVar, BooleanVar, mainloop, getint, getdouble, getboolean, Misc, CallWrapper, XView, YView, Wm, Tcl, Pack, Place, Grid, BaseWidget, Widget, Toplevel, Button, Canvas, Checkbutton, Entry, Frame, Listbox, Menu, Menubutton, Message, Radiobutton, Scrollbar, Text, OptionMenu, Image, PhotoImage, BitmapImage, image_names, image_types, Spinbox, LabelFrame, PanedWindow, NO, FALSE, OFF, YES, TRUE, ON, N, S, W, E, NW, SW, NE, SE, NS, EW, NSEW, CENTER, NONE, X, Y, BOTH, LEFT, TOP, RIGHT, BOTTOM, RAISED, SUNKEN, FLAT, RIDGE, GROOVE, SOLID, VERTICAL, NUMERIC, CHAR, WORD, BASELINE, INSIDE, OUTSIDE, SEL, SEL_FIRST, SEL_LAST, END, INSERT, CURRENT, ANCHOR, ALL, NORMAL, DISABLED, ACTIVE, HIDDEN, CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR, SINGLE, BROWSE, MULTIPLE, EXTENDED, DOTBOX, UNDERLINE, PIESLICE, CHORD, ARC, FIRST, LAST, BUTT, PROJECTING, ROUND, BEVEL, MITER, MOVETO, SCROLL, UNITS and PAGES from wildcard import of tkinter (unused-wildcard-import)
+attack/form_manager.py:8:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+attack/form_manager.py:50:4: C0103: Method name "onClick" doesn't conform to snake_case naming style (invalid-name)
+attack/form_manager.py:121:26: R1719: The if expression can be replaced with 'bool(test)' (simplifiable-if-expression)
+attack/form_manager.py:65:12: W0201: Attribute 'current_node' defined outside __init__ (attribute-defined-outside-init)
+attack/form_manager.py:10:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+attack/form_manager.py:4:0: W0611: Unused List imported from typing (unused-import)
+attack/form_manager.py:6:0: W0614: Unused import(s) enum, sys, types, TclError, re, wantobjects, TkVersion, TclVersion, READABLE, WRITABLE, EXCEPTION, EventType, Event, NoDefaultRoot, Variable, StringVar, IntVar, DoubleVar, BooleanVar, mainloop, getint, getdouble, getboolean, Misc, CallWrapper, XView, YView, Wm, Tcl, Pack, Place, Grid, BaseWidget, Widget, Toplevel, Button, Canvas, Checkbutton, Entry, Frame, Listbox, Menu, Menubutton, Message, Radiobutton, Scrollbar, Text, OptionMenu, Image, PhotoImage, BitmapImage, image_names, image_types, Spinbox, LabelFrame, PanedWindow, NO, FALSE, OFF, YES, TRUE, ON, N, S, W, E, NW, SW, NE, SE, NS, EW, NSEW, CENTER, NONE, X, Y, BOTH, LEFT, TOP, RIGHT, BOTTOM, RAISED, SUNKEN, FLAT, RIDGE, GROOVE, SOLID, VERTICAL, NUMERIC, CHAR, WORD, BASELINE, INSIDE, OUTSIDE, SEL, SEL_FIRST, SEL_LAST, END, INSERT, CURRENT, ANCHOR, ALL, NORMAL, DISABLED, ACTIVE, HIDDEN, CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR, SINGLE, BROWSE, MULTIPLE, EXTENDED, DOTBOX, UNDERLINE, PIESLICE, CHORD, ARC, FIRST, LAST, BUTT, PROJECTING, ROUND, BEVEL, MITER, MOVETO, SCROLL, UNITS and PAGES from wildcard import of tkinter (unused-wildcard-import)
 ************* Module node
 attack/node.py:28:0: C0303: Trailing whitespace (trailing-whitespace)
 attack/node.py:57:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -120,10 +117,8 @@ attack/summary.py:1:0: R0801: Similar lines in 2 files
         self.all_labels:dict = {}
         self.color_map:List[str] = []
         self.node_sizes:List[str] = []
-        self.pos:dict = None
-
-    def draw(self): (duplicate-code)
+        self.pos:dict = None (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 4.31/10 (previous run: 3.10/10, +1.20)
+Your code has been rated at 4.42/10 (previous run: 4.31/10, +0.11)
 
