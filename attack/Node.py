@@ -55,6 +55,9 @@ class Node:
         (_, max_impact) = self._get_children_risk_and_impact()
         return max_impact
 
+    def get_severity(self):
+        return self.get_impact() * self.get_risk()
+
     def _get_children_risk_and_impact(self):
         max_risk = 0
         max_impact = 0
