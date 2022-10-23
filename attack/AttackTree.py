@@ -88,7 +88,7 @@ class AttackTree:
 
     def _calculate_color(self, node:Node):
         # color maps https://matplotlib.org/stable/tutorials/colors/colormaps.html
-        (red,green,blue,_) = mpl.colormaps['gist_ncar'](0.43+float(node.get_severity())/100*0.45)
+        (red,green,blue,_) = mpl.colormaps['gist_ncar'](0.43+float(node.get_severity())/100*0.42)
         return "#{red:02x}{green:02x}{blue:02x}".format(red=int(red*255), green=int(green*255), blue=int(blue*255))
 
     def _load_nodes(self, file:str) -> List[Node]:

@@ -39,15 +39,11 @@ class FormManager:
         
         # form
         Label(self.window, text="risk").pack(pady = 0)
-        self.input_risk = tk.Entry(self.window)
+        self.input_risk = Scale(self.window, from_=0, to=10, length=200, orient=HORIZONTAL, command=self._store_risk)
         self.input_risk.pack(pady = 0)
         Label(self.window, text="impact").pack(pady = 0)
-        self.input_impact = tk.Entry(self.window)
+        self.input_impact = Scale(self.window, from_=0, to=10, length=200, orient=HORIZONTAL, command=self._store_risk)
         self.input_impact.pack(pady = 0)
-
-        # button
-        self.save_button = Button(self.window, text ="save", command = self._store_risk)
-        self.save_button.pack(pady = 0)
 
         # disable
         self._toggle_form(False)
@@ -61,11 +57,10 @@ class FormManager:
             self._toggle_form(False)
 
     def _toggle_form(self, active:bool):
-        self.input_risk.config(state=("normal" if active else "readonly"))
-        self.input_impact.config(state=("normal" if active else "readonly"))
-        self.save_button.config(state=("normal" if active else "disabled"))
+        self.input_risk.config(state=("normal" if active else "disabled"))
+        self.input_impact.config(state=("normal" if active else "disabled"))
 
-    def _store_risk(self):
+    def _store_risk(self, e):
         self.current_node.set_risk(int(self.input_risk.get()))
         self.current_node.set_impact(int(self.input_impact.get()))
         self.attack_tree.draw()
@@ -73,9 +68,7 @@ class FormManager:
     def _print_info(self, node:Node):
         print(node)
         self._toggle_form(True)
-        self.input_risk.delete(0,END)
-        self.input_risk.insert(0,node.get_risk())
-        self.input_impact.delete(0,END)
-        self.input_impact.insert(0,node.get_impact())
+        self.input_risk.set(node.get_risk())
+        self.input_impact.set(node.get_risk())
         self.details_label.config(text = node.description)
         self._toggle_form(True if node.is_leaf() else False)
