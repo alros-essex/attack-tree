@@ -25,7 +25,8 @@ class FormManager:
         """
         self.attack_tree = attack_tree
         self.window = window
-        self.on_update=on_update
+        self.on_update = on_update
+        self.current_node = None
 
         # description
         Label(self.window, text = "node details").pack(pady = 10)
@@ -53,7 +54,7 @@ class FormManager:
         # disable
         self._toggle_form(False)
 
-    def onClick(self, event) -> None:
+    def on_click(self, event) -> None:
         """
         Callback reacting to clicks on the window
 
@@ -124,4 +125,4 @@ class FormManager:
         self.input_risk.set(node.get_risk())
         self.input_impact.set(node.get_risk())
         self.details_label.config(text = node.description)
-        self._toggle_form(True if node.is_leaf() else False)
+        self._toggle_form(node.is_leaf())

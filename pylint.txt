@@ -22,61 +22,20 @@ attack/attack_tree.py:4:0: W0611: Unused Pointfloat imported from tokenize (unus
 attack/file_parser.py:5:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 attack/file_parser.py:7:0: R0903: Too few public methods (1/2) (too-few-public-methods)
 ************* Module form_manager
-attack/form_manager.py:41:44: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:68:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:88:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:104:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:113:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:122:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/form_manager.py:131:0: C0304: Final newline missing (missing-final-newline)
-attack/form_manager.py:6:0: W0401: Wildcard import tkinter (wildcard-import)
-attack/form_manager.py:7:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/form_manager.py:8:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/form_manager.py:60:4: C0103: Method name "onClick" doesn't conform to snake_case naming style (invalid-name)
-attack/form_manager.py:131:26: R1719: The if expression can be replaced with 'bool(test)' (simplifiable-if-expression)
-attack/form_manager.py:75:12: W0201: Attribute 'current_node' defined outside __init__ (attribute-defined-outside-init)
-attack/form_manager.py:10:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-attack/form_manager.py:4:0: W0611: Unused List imported from typing (unused-import)
-attack/form_manager.py:6:0: W0614: Unused import(s) enum, sys, types, TclError, re, wantobjects, TkVersion, TclVersion, READABLE, WRITABLE, EXCEPTION, EventType, Event, NoDefaultRoot, Variable, StringVar, IntVar, DoubleVar, BooleanVar, mainloop, getint, getdouble, getboolean, Misc, CallWrapper, XView, YView, Wm, Tcl, Pack, Place, Grid, BaseWidget, Widget, Toplevel, Button, Canvas, Checkbutton, Entry, Frame, Listbox, Menu, Menubutton, Message, Radiobutton, Scrollbar, Text, OptionMenu, Image, PhotoImage, BitmapImage, image_names, image_types, Spinbox, LabelFrame, PanedWindow, NO, FALSE, OFF, YES, TRUE, ON, N, S, W, E, NW, SW, NE, SE, NS, EW, NSEW, CENTER, NONE, X, Y, BOTH, LEFT, TOP, RIGHT, BOTTOM, RAISED, SUNKEN, FLAT, RIDGE, GROOVE, SOLID, VERTICAL, NUMERIC, CHAR, WORD, BASELINE, INSIDE, OUTSIDE, SEL, SEL_FIRST, SEL_LAST, END, INSERT, CURRENT, ANCHOR, ALL, NORMAL, DISABLED, ACTIVE, HIDDEN, CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR, SINGLE, BROWSE, MULTIPLE, EXTENDED, DOTBOX, UNDERLINE, PIESLICE, CHORD, ARC, FIRST, LAST, BUTT, PROJECTING, ROUND, BEVEL, MITER, MOVETO, SCROLL, UNITS and PAGES from wildcard import of tkinter (unused-wildcard-import)
+attack/form_manager.py:3:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+attack/form_manager.py:4:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
+attack/form_manager.py:6:0: R0903: Too few public methods (1/2) (too-few-public-methods)
 ************* Module node
-attack/node.py:47:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/node.py:136:0: C0303: Trailing whitespace (trailing-whitespace)
-attack/node.py:5:0: W0401: Wildcard import tkinter (wildcard-import)
-attack/node.py:27:8: C0103: Attribute name "id" doesn't conform to snake_case naming style (invalid-name)
-attack/node.py:10:23: C0103: Argument name "id" doesn't conform to snake_case naming style (invalid-name)
-attack/node.py:10:4: W0102: Dangerous default value [] as argument (dangerous-default-value)
-attack/node.py:10:23: W0622: Redefining built-in 'id' (redefined-builtin)
-attack/node.py:154:15: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
-attack/node.py:4:0: W0611: Unused Enum imported from enum (unused-import)
-attack/node.py:5:0: W0614: Unused import(s) enum, sys, types, TclError, re, wantobjects, TkVersion, TclVersion, READABLE, WRITABLE, EXCEPTION, EventType, Event, NoDefaultRoot, Variable, StringVar, IntVar, DoubleVar, BooleanVar, mainloop, getint, getdouble, getboolean, Misc, CallWrapper, XView, YView, Wm, Tk, Tcl, Pack, Place, Grid, BaseWidget, Widget, Toplevel, Button, Canvas, Checkbutton, Entry, Frame, Label, Listbox, Menu, Menubutton, Message, Radiobutton, Scale, Scrollbar, Text, OptionMenu, Image, PhotoImage, BitmapImage, image_names, image_types, Spinbox, LabelFrame, PanedWindow, NO, FALSE, OFF, YES, TRUE, ON, N, S, W, E, NW, SW, NE, SE, NS, EW, NSEW, CENTER, NONE, X, Y, BOTH, LEFT, TOP, RIGHT, BOTTOM, RAISED, SUNKEN, FLAT, RIDGE, GROOVE, SOLID, HORIZONTAL, VERTICAL, NUMERIC, CHAR, WORD, BASELINE, INSIDE, OUTSIDE, SEL, SEL_FIRST, SEL_LAST, END, INSERT, CURRENT, ANCHOR, ALL, NORMAL, DISABLED, ACTIVE, HIDDEN, CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR, SINGLE, BROWSE, MULTIPLE, EXTENDED, DOTBOX, UNDERLINE, PIESLICE, CHORD, ARC, FIRST, LAST, BUTT, PROJECTING, ROUND, BEVEL, MITER, MOVETO, SCROLL, UNITS and PAGES from wildcard import of tkinter (unused-wildcard-import)
+attack/node.py:149:0: C0305: Trailing newlines (trailing-newlines)
+attack/node.py:25:8: C0103: Attribute name "id" doesn't conform to snake_case naming style (invalid-name)
+attack/node.py:8:23: C0103: Argument name "id" doesn't conform to snake_case naming style (invalid-name)
+attack/node.py:8:23: W0622: Redefining built-in 'id' (redefined-builtin)
 ************* Module summary
-attack/summary.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-attack/summary.py:8:0: W0401: Wildcard import tkinter (wildcard-import)
 attack/summary.py:13:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
-attack/summary.py:15:0: C0115: Missing class docstring (missing-class-docstring)
-attack/summary.py:20:8: C0103: Attribute name "G" doesn't conform to snake_case naming style (invalid-name)
-attack/summary.py:15:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
-attack/summary.py:28:4: C0116: Missing function or method docstring (missing-function-docstring)
-attack/summary.py:32:9: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
-attack/summary.py:32:12: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
-attack/summary.py:32:15: C0103: Variable name "z" doesn't conform to snake_case naming style (invalid-name)
-attack/summary.py:44:8: C0103: Variable name "x" doesn't conform to snake_case naming style (invalid-name)
-attack/summary.py:45:8: C0103: Variable name "y" doesn't conform to snake_case naming style (invalid-name)
-attack/summary.py:46:8: C0103: Variable name "z" doesn't conform to snake_case naming style (invalid-name)
 attack/summary.py:15:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-attack/summary.py:7:0: C0411: standard import "from typing import List" should be placed before "from graphviz import Digraph" (wrong-import-order)
-attack/summary.py:8:0: C0411: standard import "from tkinter import *" should be placed before "from graphviz import Digraph" (wrong-import-order)
-attack/summary.py:4:0: W0611: Unused graphviz_layout imported from networkx.drawing.nx_pydot (unused-import)
-attack/summary.py:8:0: W0614: Unused import(s) enum, sys, types, TclError, re, wantobjects, TkVersion, TclVersion, READABLE, WRITABLE, EXCEPTION, EventType, Event, NoDefaultRoot, Variable, StringVar, IntVar, DoubleVar, BooleanVar, mainloop, getint, getdouble, getboolean, Misc, CallWrapper, XView, YView, Wm, Tk, Tcl, Pack, Place, Grid, BaseWidget, Widget, Toplevel, Button, Canvas, Checkbutton, Entry, Frame, Label, Listbox, Menu, Menubutton, Message, Radiobutton, Scale, Scrollbar, Text, OptionMenu, Image, PhotoImage, BitmapImage, image_names, image_types, Spinbox, LabelFrame, PanedWindow, NO, FALSE, OFF, YES, TRUE, ON, N, S, W, E, NW, SW, NE, SE, NS, EW, NSEW, CENTER, NONE, X, Y, BOTH, LEFT, TOP, RIGHT, BOTTOM, RAISED, SUNKEN, FLAT, RIDGE, GROOVE, SOLID, HORIZONTAL, VERTICAL, NUMERIC, CHAR, WORD, BASELINE, INSIDE, OUTSIDE, SEL, SEL_FIRST, SEL_LAST, END, INSERT, CURRENT, ANCHOR, ALL, NORMAL, DISABLED, ACTIVE, HIDDEN, CASCADE, CHECKBUTTON, COMMAND, RADIOBUTTON, SEPARATOR, SINGLE, BROWSE, MULTIPLE, EXTENDED, DOTBOX, UNDERLINE, PIESLICE, CHORD, ARC, FIRST, LAST, BUTT, PROJECTING, ROUND, BEVEL, MITER, MOVETO, SCROLL, UNITS and PAGES from wildcard import of tkinter (unused-wildcard-import)
-attack/summary.py:1:0: R0801: Similar lines in 2 files
-==attack_tree:[41:59]
-==summary:[20:25]
-        self.all_nodes:List[str] = []
-        self.all_labels:dict = {}
-        self.color_map:List[str] = []
-        self.node_sizes:List[str] = []
-        self.pos:dict = None (duplicate-code)
+attack/summary.py:5:0: W0611: Unused Digraph imported from graphviz (unused-import)
+attack/summary.py:6:0: W0611: Unused networkx imported as nx (unused-import)
 
 ------------------------------------------------------------------
-Your code has been rated at 5.93/10 (previous run: 5.12/10, +0.81)
+Your code has been rated at 7.09/10 (previous run: 7.04/10, +0.05)
 

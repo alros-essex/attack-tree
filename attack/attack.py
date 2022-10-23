@@ -127,7 +127,7 @@ class Attack:
 
         form_manager = FormManager(attack_tree, tab, on_update=on_update)
 
-        figure_canvas.mpl_connect('button_press_event', form_manager.onClick)
+        figure_canvas.mpl_connect('button_press_event', form_manager.on_click)
 
 def main():
     """Start the application"""

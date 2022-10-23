@@ -5,7 +5,7 @@ from typing import List
 class Node:
     """Represents a node in the attack tree"""
 
-    def __init__(self, id:str, description:str, children:List[Node]=[]) -> None:
+    def __init__(self, id:str, description:str, children:List[Node]=None):
         """
         Builds an instance
 
@@ -24,7 +24,7 @@ class Node:
         """
         self.id=id
         self.description=description
-        self.children=children
+        self.children=children if not None else []
         self.risk = 0
         self.impact = 0
 
@@ -147,9 +147,3 @@ class Node:
         """
         self.impact = impact
 
-    def __str__(self) -> str:
-        """string representation"""
-        return "Node id={id} risk={risk} impact={impact}".format(
-            id=self.id,
-            risk=self.risk,
-            impact=self.impact)
