@@ -24,9 +24,6 @@ from .AttackTree import AttackTree
 from .Node import Node, NodeType
 
 class FormManager:
-    attack_tree:AttackTree
-    window:Tk
-    details_label:Label
 
     def __init__(self, attack_tree:AttackTree, window:Tk) -> None:
         self.attack_tree = attack_tree

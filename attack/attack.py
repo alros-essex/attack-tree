@@ -23,23 +23,36 @@ from matplotlib.backends.backend_tkagg import (
 from .AttackTree import AttackTree
 from .Node import Node, NodeType
 from .FormManager import FormManager
+from tkinter import ttk
+from .FileParser import FileParser
 
 def main():
-    window = tk.Tk()
-    figure = Figure(figsize=(6, 4), dpi=100)
-    figure_canvas = FigureCanvasTkAgg(figure, window)
-    figure_canvas.draw()
-
-    toolbar=NavigationToolbar2Tk(figure_canvas, window)
-    toolbar.update()
-
-    attack_tree = AttackTree('trees/unmitigated.yml', figure, figure_canvas)
-
-    attack_tree.draw()
-
-    figure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+    node_list:List[Node] = FileParser.load_nodes(file='trees/unmitigated.yml')
     
-    formManager = FormManager(attack_tree, window)
+    window = tk.Tk()
+    tabControl = ttk.Notebook(window)
 
-    figure_canvas.mpl_connect('button_press_event', formManager.onClick)
+    for root in node_list:
+        tab = ttk.Frame(tabControl)
+        tabControl.add(tab, text=root.id)
+
+        figure = Figure(figsize=(6, 4), dpi=100)
+        figure_canvas = FigureCanvasTkAgg(figure, tab)
+        figure_canvas.draw()
+
+        toolbar=NavigationToolbar2Tk(figure_canvas, tab)
+        toolbar.update()
+
+        attack_tree = AttackTree(root=root, figure=figure,figure_canvas=figure_canvas)
+
+        attack_tree.draw()
+
+        figure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+        
+        formManager = FormManager(attack_tree, tab)
+
+        figure_canvas.mpl_connect('button_press_event', formManager.onClick)
+    
+    tabControl.pack(expand=1, fill="both")
+
     window.mainloop()
