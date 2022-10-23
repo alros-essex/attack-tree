@@ -1,27 +1,10 @@
 from __future__ import annotations
-from cProfile import label
-import imp
-from tokenize import Pointfloat
-from graphviz import Digraph
-from matplotlib.axes import Axes
-import networkx as nx
-import matplotlib.pyplot as plt
-from networkx.drawing.nx_pydot import graphviz_layout
-import yaml
 
 from typing import List
-from enum import Enum
 
-import tkinter as tk
 from tkinter import *
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (
-    FigureCanvasTkAgg,
-    NavigationToolbar2Tk
-)
-
 from .AttackTree import AttackTree
-from .Node import Node, NodeType
+from .Node import Node
 
 class FormManager:
 

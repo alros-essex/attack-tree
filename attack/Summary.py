@@ -58,7 +58,6 @@ class Summary:
         x = []
         y = []
         z = []
-        colors = []
         for node in self.node_list:
             key = (node.get_impact(),node.get_risk())
             current = severity.get(key, 0)
@@ -68,28 +67,3 @@ class Summary:
             y.append(risk)
             z.append(severity.get((impact, risk)))
         return (np.array(x), np.array(y), np.array(z))
-
-    def _add_all_nodes(self):
-        self._reset()
-        for node in self.node_list:
-            self._add_node(node)
-
-    def _add_node(self, node:Node):
-        self.all_labels[node.id] = node.id
-        self.G.add_node(node.id)
-        self.pos[node.id]=(node.get_impact(), node.get_risk())
-        self.all_nodes.append(node)
-        self.node_sizes.append(5*node.get_severity())
-        self.color_map.append(self._calculate_color(node))
-
-    def _calculate_color(self, node:Node):
-        # color maps https://matplotlib.org/stable/tutorials/colors/colormaps.html
-        (red,green,blue,_) = mpl.colormaps['gist_ncar'](0.43+float(node.get_severity())/100*0.42)
-        return "#{red:02x}{green:02x}{blue:02x}".format(red=int(red*255), green=int(green*255), blue=int(blue*255))
-
-    def _reset(self):
-        self.pos={}
-        self.G.clear()
-        self.figure.clear()
-        plt.clf()
-        self.color_map.clear()

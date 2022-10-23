@@ -1,0 +1,3 @@
+[bandit]
+targets = attack
+recursive = true

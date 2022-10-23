@@ -1,16 +1,6 @@
 from __future__ import annotations
-from cProfile import label
-import imp
-from tokenize import Pointfloat
-from graphviz import Digraph
-from matplotlib.axes import Axes
-import networkx as nx
-import matplotlib.pyplot as plt
-from networkx.drawing.nx_pydot import graphviz_layout
-import yaml
 
 from typing import List
-from enum import Enum
 
 import tkinter as tk
 from tkinter import *
@@ -21,10 +11,10 @@ from matplotlib.backends.backend_tkagg import (
 )
 
 from .AttackTree import AttackTree
-from .Node import Node, NodeType
+from .Node import Node
 from .FormManager import FormManager
 from tkinter.ttk import Notebook,Frame
-from .FileParser import FileParser
+from .file_parser import FileParser
 from .Summary import Summary
 
 class Attack:
