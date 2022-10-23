@@ -1,22 +1,14 @@
 from __future__ import annotations
-from cProfile import label
-from tokenize import Pointfloat
 from graphviz import Digraph
-from matplotlib.axes import Axes
 import networkx as nx
-import matplotlib.pyplot as plt
 from networkx.drawing.nx_pydot import graphviz_layout
-import yaml
 import numpy as np
-import matplotlib as mpl
 
 from typing import List
 from tkinter import *
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (
-    FigureCanvasTkAgg,
-    NavigationToolbar2Tk
-)
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 
 from .node import Node
 

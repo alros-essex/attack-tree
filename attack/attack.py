@@ -6,10 +6,7 @@ from typing import List
 import tkinter as tk
 from tkinter import *
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (
-    FigureCanvasTkAgg,
-    NavigationToolbar2Tk
-)
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolbar2Tk
 
 from .attack_tree import AttackTree
 from .node import Node
@@ -33,7 +30,7 @@ class Attack:
         -------
         None
         """
-        node_list:List[Node] = FileParser.load_nodes(file='trees/unmitigated.yml')
+        node_list:List[Node] = FileParser().load_nodes(file='trees/unmitigated.yml')
         self._start_gui(node_list)
 
     def _start_gui(self, node_list:List[Node]) -> None:

@@ -1,9 +1,5 @@
 """FormManager"""
-from __future__ import annotations
-
-from typing import List
-
-from tkinter import *
+from tkinter import Label, HORIZONTAL, Scale, Tk
 from .attack_tree import AttackTree
 from .node import Node
 
@@ -38,7 +34,7 @@ class FormManager:
 
         # form
         Label(self.window, text="risk").pack(pady = 0)
-        self.input_risk = Scale(self.window, 
+        self.input_risk = Scale(self.window,
             from_=0,
             to=10,
             length=200,
@@ -65,7 +61,7 @@ class FormManager:
         ----------
         event :
             Tk click event
-        
+
         Returns
         -------
         None
@@ -85,7 +81,7 @@ class FormManager:
         ----------
         activate : bool
             true to activate, false otherwise
-        
+
         Returns
         -------
         None
@@ -101,7 +97,7 @@ class FormManager:
         ----------
         _ : event
             ignored
-        
+
         Returns
         -------
         None
@@ -110,7 +106,7 @@ class FormManager:
         self.current_node.set_impact(int(self.input_impact.get()))
         self.attack_tree.draw()
         self.on_update()
-    
+
     def _print_info(self, node:Node) -> None:
         """
         Set up the form
@@ -119,7 +115,7 @@ class FormManager:
         ----------
         node : Node
             selected node
-        
+
         Returns
         -------
         None

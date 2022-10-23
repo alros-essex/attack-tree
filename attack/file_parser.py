@@ -1,16 +1,13 @@
 """FileParser"""
 from __future__ import annotations
-import yaml
-
 from typing import List
-
+import yaml
 from .node import Node
 
 class FileParser:
     """Utility to parse the attack trees"""
 
-    @staticmethod
-    def load_nodes(file:str) -> List[Node]:
+    def load_nodes(self, file:str) -> List[Node]:
         """
         Loads a file with an attack tree
 
@@ -27,12 +24,12 @@ class FileParser:
         with open(file, "r", encoding='UTF8') as stream:
             try:
                 data = yaml.safe_load(stream)
-                return FileParser._parse_nodes(data['issues'])
+                return self._parse_nodes(data['issues'])
             except yaml.YAMLError as exc:
                 print(exc)
                 return None
 
-    def _parse_nodes(issues) -> List[Node]:
+    def _parse_nodes(self, issues) -> List[Node]:
         """
         Parses all the nodes
 
@@ -48,8 +45,9 @@ class FileParser:
         """
         nodes = []
         for issue in issues:
+            children = self._parse_nodes(issue['children']) if 'children' in issue else []
             nodes.append(Node(
                 id=issue['id'],
                 description=issue['description'],
-                children=FileParser._parse_nodes(issue['children']) if 'children' in issue else []))
+                children=children))
         return nodes

@@ -10,12 +10,8 @@ import matplotlib as mpl
 
 from typing import List
 
-from tkinter import *
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (
-    FigureCanvasTkAgg,
-    NavigationToolbar2Tk
-)
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from .node import Node
 
@@ -42,7 +38,7 @@ class AttackTree:
         self.figure:Figure = figure
         self.root:Node = root
         self.figure_canvas:FigureCanvasTkAgg = figure_canvas
-        self.G:Digraph = nx.DiGraph()
+        self.graph:Digraph = nx.DiGraph()
         self.all_nodes:List[str] = []
         self.all_labels:dict = {}
         self.color_map:List[str] = []
@@ -62,18 +58,18 @@ class AttackTree:
         None
         """
         self._add_all_nodes()
-        self.pos=graphviz_layout(self.G,prog="dot")
+        self.pos=graphviz_layout(self.graph,prog="dot")
         self.figure.clf()
         axes = self.figure.add_subplot()
 
-        nx.draw_networkx_edges(self.G, ax=axes, pos=self.pos)
-        nx.draw_networkx_nodes(self.G,
+        nx.draw_networkx_edges(self.graph, ax=axes, pos=self.pos)
+        nx.draw_networkx_nodes(self.graph,
             ax=axes,
             pos=self.pos,
             node_color=self.color_map,
-            node_shape='o',#other shapes: so^>v<dph8 
+            node_shape='o',#other shapes: so^>v<dph8
             node_size=300)
-        nx.draw_networkx_labels(self.G, 
+        nx.draw_networkx_labels(self.graph,
             ax=axes,
             pos=self.pos,
             labels=self.all_labels,
@@ -81,15 +77,15 @@ class AttackTree:
             font_family='sans-serif')
         self.figure_canvas.draw()
 
-    def find_node(self, x:int, y:int) -> Node | None:
+    def find_node(self, pos_x:int, pos_y:int) -> Node | None:
         """
         Finds a node given it's position on screen
 
         Parameters
         ----------
-        x : int
+        pos_x : int
             coordinate
-        y : int
+        pos_y : int
             coordinate
 
         Returns
@@ -98,7 +94,7 @@ class AttackTree:
         """
         for node in self.all_nodes:
             id = node.id
-            distance = pow(x-self.pos[id][0],2)+pow(y-self.pos[id][1],2)
+            distance = pow(pos_x-self.pos[id][0],2)+pow(pos_y-self.pos[id][1],2)
             if distance < 70:
                 return node
         return None
@@ -117,7 +113,7 @@ class AttackTree:
         """
         self._reset()
         self._add_node(self.root)
-    
+
     def _reset(self) -> None:
         """
         Convenience method to clean the screen
@@ -130,7 +126,7 @@ class AttackTree:
         -------
         None
         """
-        self.G.clear()
+        self.graph.clear()
         self.figure.clear()
         plt.clf()
         self.color_map.clear()
@@ -151,18 +147,18 @@ class AttackTree:
         None
         """
         self.all_labels[node.id] = node.id
-        self.G.add_node(node.id)
+        self.graph.add_node(node.id)
         self.all_nodes.append(node)
         self.node_sizes.append(500)
         self.color_map.append(self._calculate_color(node))
         if father is not None:
-            self.G.add_edge(father.id, node.id)
+            self.graph.add_edge(father.id, node.id)
         for child in node.children:
             self._add_node(child, node)
 
     def _calculate_color(self, node:Node) -> str:
         """
-        Convenience method to determine the colour 
+        Convenience method to determine the colour
 
         Parameters
         ----------
