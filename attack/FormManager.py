@@ -25,9 +25,10 @@ from .Node import Node, NodeType
 
 class FormManager:
 
-    def __init__(self, attack_tree:AttackTree, window:Tk) -> None:
+    def __init__(self, attack_tree:AttackTree, window:Tk, on_update) -> None:
         self.attack_tree = attack_tree
         self.window = window
+        self.on_update=on_update
 
         # description
         Label(self.window, text = "node details").pack(pady = 10)
@@ -61,9 +62,9 @@ class FormManager:
         self.current_node.set_risk(int(self.input_risk.get()))
         self.current_node.set_impact(int(self.input_impact.get()))
         self.attack_tree.draw()
+        self.on_update()
     
     def _print_info(self, node:Node):
-        print(node)
         self._toggle_form(True)
         self.input_risk.set(node.get_risk())
         self.input_impact.set(node.get_risk())
