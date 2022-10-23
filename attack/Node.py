@@ -4,24 +4,14 @@ from typing import List
 from enum import Enum
 from tkinter import *
 
-class NodeType(Enum):
-    state = 0
-    threat = 1
-    mitigation = 2
-
 class Node:
-    id:str
-    description:str
-    children:List[Node]
-    type:str
-    risk:int = 0
-    impact:int = 0
 
-    def __init__(self, id:str, description:str, type:NodeType, children:List[Node]=[]) -> None:
+    def __init__(self, id:str, description:str, children:List[Node]=[]) -> None:
         self.id=id
         self.description=description
         self.children=children
-        self.type=type
+        self.risk = 0
+        self.impact = 0
 
     def is_leaf(self):
         return self.children is None or len(self.children)==0

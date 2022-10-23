@@ -17,13 +17,7 @@ from matplotlib.backends.backend_tkagg import (
     NavigationToolbar2Tk
 )
 
-from .node import Node, NodeType
-
-node_colors = {
-    NodeType.state: '#b8b8b8',
-    NodeType.threat: '#ff4040',
-    NodeType.mitigation: '#1f78b4'
-}
+from .node import Node
 
 class AttackTree:
     """Responsible to draw the attack tree on screen"""

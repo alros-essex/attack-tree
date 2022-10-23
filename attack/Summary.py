@@ -18,7 +18,7 @@ from matplotlib.backends.backend_tkagg import (
     NavigationToolbar2Tk
 )
 
-from .node import Node, NodeType
+from .node import Node
 
 class Summary:
     def __init__(self, node_list:List[Node], figure:Figure, figure_canvas:FigureCanvasTkAgg):

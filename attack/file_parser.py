@@ -4,7 +4,7 @@ import yaml
 
 from typing import List
 
-from .node import Node, NodeType
+from .node import Node
 
 class FileParser:
     """Utility to parse the attack trees"""
@@ -51,6 +51,5 @@ class FileParser:
             nodes.append(Node(
                 id=issue['id'],
                 description=issue['description'],
-                type=NodeType[issue['type']],
                 children=FileParser._parse_nodes(issue['children']) if 'children' in issue else []))
         return nodes
