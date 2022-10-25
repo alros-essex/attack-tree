@@ -10,15 +10,11 @@ setup(
     packages=find_packages(include=['attack']),
     test_suite = 'test',
     install_requires=[
-        "plotly >= 5.10.0",
         "networkx >= 2.8.7",
-        "pandas >= 1.5.0",
         "matplotlib >= 3.6.1",
-        "GraVE >= 0.0.3",
-        "pydot",
-        "graphviz",
-        "tcl",
-        "pyyaml"
+        "numpy>=1.23.4",
+        "graphviz>=0.20.1",
+        "PyYAML>=6.0"
     ],
     python_requires='>=3.6'
 )
