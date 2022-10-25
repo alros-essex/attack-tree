@@ -1,0 +1,45 @@
+issues:
+  - id: tax info data loss
+    description: there is a risk of losing data
+    children:
+      - id: email pc infected
+        description: the pc receiving orders via mail acts spreads malware in the local network
+        children:
+          - id: via mail
+            description: employee opens a dangerous attachment
+          - id: via phishing
+            description: employee clicks on a link and downloads malware
+          - id: via social engineering
+            description: employee is guided by a con man and damages the archive
+          - id: via infected media
+            description: employee uses an infected media or unsafe software (e.g. illegal downloads)
+      - id: hardware failure
+        description: the hard drive is damaged
+      - id: accidental deletion
+        description: an employee accidentally deletes data
+      - id: vandalism
+        description: vandals break in and steal / damage the computer
+  - id: mail order block
+    description: it becomes impossibile to receive orders via mail
+    children:
+      - id: computer KO
+        description: the computer used for mail order is out of order
+        children:
+          - id: malware
+            description: malware infection
+            children:
+              - id: via mail
+                description: employee opens a dangerous attachment
+              - id: via phishing
+                description: employee clicks on a link and downloads malware
+              - id: via social engineering
+                description: employee is guided by a con man and damages the archive
+              - id: via infected media
+                description: employee uses an infected media or unsafe software (e.g. illegal downloads)
+      - id: network KO
+        description: the network is unusable
+        children:
+          - id: provider issues
+            description: the internet provider experience some temporary issues
+          - id: hardware failure
+            description: the router is damaged or stops working

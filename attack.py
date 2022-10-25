@@ -1,6 +1,7 @@
 """Attack"""
 from __future__ import annotations
 
+import sys
 from typing import List
 
 import tkinter as tk
@@ -17,20 +18,22 @@ from summary import Summary
 class Attack:
     """Class with the application's core"""
 
-    def load_application(self):
+    def load_application(self, file:str):
         """
         Loads the input file and starts the application
 
         Parameters
         ----------
-        None
+        file : str
+            path to the attack tree
 
         Returns
         -------
         None
         """
-        node_list:List[Node] = FileParser().load_nodes(file='trees/unmitigated.yml')
-        self.start_gui(node_list)
+        node_list:List[Node] = FileParser().load_nodes(file=file)
+        if node_list is not None:
+            self.start_gui(node_list)
 
     def start_gui(self, node_list:List[Node]) -> None:
         """
@@ -74,7 +77,7 @@ class Attack:
         tab = Frame(tab_control)
         tab_control.add(tab, text='Summary')
 
-        figure = Figure(figsize=(6, 4), dpi=100)
+        figure = Figure(figsize=(10, 7), dpi=100)
         figure_canvas = FigureCanvasTkAgg(figure, tab)
         figure_canvas.draw()
 
@@ -129,4 +132,7 @@ class Attack:
         figure_canvas.mpl_connect('button_press_event', form_manager.on_click)
 
 if __name__ == "__main__":
-    Attack().load_application()
+    if len(sys.argv) != 2:
+        print("specify a file containing an attack tree")
+    else:
+        Attack().load_application(sys.argv[1])

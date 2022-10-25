@@ -21,13 +21,17 @@ class FileParser:
         List[Node] :
             The loaded nodes
         """
-        with open(file, "r", encoding='UTF8') as stream:
-            try:
-                data = yaml.safe_load(stream)
-                return self.parse_nodes(data['issues'])
-            except yaml.YAMLError as exc:
-                print(exc)
-                return None
+        try:
+            with open(file, "r", encoding='UTF8') as stream:
+                try:
+                    data = yaml.safe_load(stream)
+                    return self.parse_nodes(data['issues'])
+                except yaml.YAMLError as exc:
+                    print(f'error parsing file {file}')
+                    return None
+        except FileNotFoundError as exc:
+            print(f'file {file} was not found')
+            return None
 
     def parse_nodes(self, issues) -> List[Node]:
         """
