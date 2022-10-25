@@ -26,10 +26,10 @@ class FileParser:
                 try:
                     data = yaml.safe_load(stream)
                     return self.parse_nodes(data['issues'])
-                except yaml.YAMLError as exc:
+                except yaml.YAMLError:
                     print(f'error parsing file {file}')
                     return None
-        except FileNotFoundError as exc:
+        except FileNotFoundError:
             print(f'file {file} was not found')
             return None
 

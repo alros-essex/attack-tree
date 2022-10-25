@@ -186,4 +186,3 @@ class AttackTree:
 
 class NonUniqueLabelException(Exception):
     """Validation error"""
-    pass
