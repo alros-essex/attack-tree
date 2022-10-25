@@ -52,13 +52,16 @@ class AttackTree:
         None
         """
         color_map = self._add_all_nodes()
-        self.pos=graphviz_layout(self.graph,prog="dot")
+        # spread the graph to form a tree top-down
+        self.pos = graphviz_layout(self.graph,prog="dot")
         self.figure.clf()
         axes = self.figure.add_subplot()
 
+        # duplicated id will collide in the map result in an error
         if len(self.pos) != len(self.all_nodes):
             raise NonUniqueLabelException()
 
+        # draw nodes, edges and labels
         nx.draw_networkx_edges(self.graph, ax=axes, pos=self.pos)
         nx.draw_networkx_nodes(self.graph,
             ax=axes,
@@ -91,8 +94,9 @@ class AttackTree:
         """
         for node in self.all_nodes:
             node_id = node.get_id()
+            # finding the closest node based on the position
             distance = pow(pos_x-self.pos[node_id][0],2)+pow(pos_y-self.pos[node_id][1],2)
-            if distance < 70:
+            if distance < 70: #70 is roughly the size of the circle
                 return node
         return None
 
@@ -148,13 +152,16 @@ class AttackTree:
         """
         if color_map is None:
             color_map = []
+        # init the root
         self.all_labels[node.get_id()] = node.get_id()
         self.graph.add_node(node.get_id())
         self.all_nodes.append(node)
         color_map.append(self._calculate_color(node))
         if father is not None:
+            # if it's not the root...
             self.graph.add_edge(father.get_id(), node.get_id())
         for child in node.get_children():
+            # add the next layers, recursively
             self._add_node(child, color_map=color_map, father=node)
         return color_map
 
@@ -172,9 +179,11 @@ class AttackTree:
         str representing the colour on a subset of the gist_ncar color scheme
         """
         # color maps https://matplotlib.org/stable/tutorials/colors/colormaps.html
+        # the constants are used to limit the gradient to a portion of the whole schema
         (red,green,blue,_) = mpl.colormaps['gist_ncar'](
             0.43+float(node.get_severity())/100*0.42)
         return f"#{int(red*255):02x}{int(green*255):02x}{int(blue*255):02x}"
 
 class NonUniqueLabelException(Exception):
+    """Validation error"""
     pass

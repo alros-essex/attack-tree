@@ -48,14 +48,17 @@ class Attack:
         -------
         None
         """
+        # create the window
         window = tk.Tk()
+        # add the tabs
         tab_control = Notebook(window)
+        # the first tab is the summary
         summary = self._add_summary_tab(node_list, tab_control)
+        # add the one tab per root node
         for root in node_list:
             self._create_tab_for_node(root, tab_control, summary)
-
+        # pack and display
         tab_control.pack(expand=1, fill="both")
-
         window.mainloop()
 
     def _add_summary_tab(self, node_list:List[Node], tab_control:Notebook) -> Summary:
@@ -74,21 +77,10 @@ class Attack:
         Summary :
             tab with the summary of the vulnerabilities
         """
-        tab = Frame(tab_control)
-        tab_control.add(tab, text='Summary')
-
-        figure = Figure(figsize=(10, 7), dpi=100)
-        figure_canvas = FigureCanvasTkAgg(figure, tab)
-        figure_canvas.draw()
-
-        toolbar=NavigationToolbar2Tk(figure_canvas, tab)
-        toolbar.update()
-
+        (figure, figure_canvas, _) = self._create_basic_tab(tab_control, 'Summary')
         summary = Summary(node_list, figure=figure,figure_canvas=figure_canvas)
         summary.draw()
-
         figure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-
         return summary
 
     def _create_tab_for_node(self, root:Node, tab_control:Notebook, summary:Summary) -> None:
@@ -108,28 +100,38 @@ class Attack:
         -------
         None
         """
-        tab = Frame(tab_control)
-        tab_control.add(tab, text=root.get_id())
-
-        figure = Figure(figsize=(6, 4), dpi=100)
-        figure_canvas = FigureCanvasTkAgg(figure, tab)
-        figure_canvas.draw()
-
-        toolbar=NavigationToolbar2Tk(figure_canvas, tab)
-        toolbar.update()
-
+        (figure, figure_canvas, tab) = self._create_basic_tab(tab_control, root.get_id())
         def on_update():
             summary.draw()
-
         attack_tree = AttackTree(root=root, figure=figure,figure_canvas=figure_canvas)
-
         attack_tree.draw()
-
         figure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-
         form_manager = FormManager(attack_tree, tab, on_update=on_update)
-
         figure_canvas.mpl_connect('button_press_event', form_manager.on_click)
+
+    def _create_basic_tab(self, tab_control:Notebook, title:str):
+        """
+        Creates the figure and the figure canvas
+
+        Parameters
+        ----------
+        tab_control : Notebook
+            tab controller
+        title : str
+            tab title
+
+        Returns
+        -------
+        Figure, FigureCanvasTkAgg, Frame
+        """
+        tab = Frame(tab_control)
+        tab_control.add(tab, text=title)
+        figure = Figure(figsize=(10, 7), dpi=100)
+        figure_canvas = FigureCanvasTkAgg(figure, tab)
+        figure_canvas.draw()
+        toolbar=NavigationToolbar2Tk(figure_canvas, tab)
+        toolbar.update()
+        return (figure, figure_canvas, tab)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:

@@ -51,7 +51,7 @@ class FormManager:
             command=self._store_risk)
         self.input_impact.pack(pady = 0)
 
-        # disable
+        # disable it
         self.toggle_form(False)
 
     def on_click(self, event) -> None:
