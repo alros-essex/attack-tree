@@ -9,7 +9,7 @@ from tkinter.ttk import Notebook,Frame
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolbar2Tk
 
-from attack_tree import AttackTree
+from attack_tree import AttackTree, NonUniqueLabelException
 from node import Node
 from form_manager import FormManager
 from file_parser import FileParser
@@ -135,4 +135,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("specify a file containing an attack tree")
     else:
-        Attack().load_application(sys.argv[1])
+        try:
+            Attack().load_application(sys.argv[1])
+        except NonUniqueLabelException:
+            print("ERROR: the node IDs must be unique")

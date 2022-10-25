@@ -1,0 +1,34 @@
+issues:
+  - id: data loss on SaaS
+    description: there is a risk of losing data
+    children:
+      - id: unpatched vulnerability
+        description: a vulnerability is exploited
+        children:
+          - id: cyberattack
+            description: a cyberattack causes a major disruption
+            children:
+              - id: attack on SaaS
+                description: the SaaS itself is the target of the attack
+              - id: attack on user
+                description: the users are under attack (e.g. cross-site scripting)
+      - id: accidental deletion
+        description: an employee accidentally deletes data
+      - id: SaaS failure
+        description: SaaS provider suffers a major incident
+  - id: online order is blocked
+    description: it becomes impossibile to receive orders online
+    children:
+      - id: SaaS failure
+        description: The SaaS service is not fully functioning
+        children:
+          - id: unpatched vulnerability
+            description: a vulnerability is exploited
+            children:
+              - id: cyberattack
+                description: a cyberattack causes a major disruption
+                children:
+                  - id: attack on SaaS
+                    description: the SaaS itself is the target of the attack
+                  - id: attack on user
+                    description: the users are under attack (e.g. cross-site scripting)

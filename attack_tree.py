@@ -56,6 +56,9 @@ class AttackTree:
         self.figure.clf()
         axes = self.figure.add_subplot()
 
+        if len(self.pos) != len(self.all_nodes):
+            raise NonUniqueLabelException()
+
         nx.draw_networkx_edges(self.graph, ax=axes, pos=self.pos)
         nx.draw_networkx_nodes(self.graph,
             ax=axes,
@@ -123,6 +126,7 @@ class AttackTree:
         self.graph.clear()
         self.figure.clear()
         plt.clf()
+        self.all_nodes.clear()
 
     def _add_node(self, node:Node, color_map:List[str] = None, father:Node = None) -> List[str]:
         """
@@ -171,3 +175,6 @@ class AttackTree:
         (red,green,blue,_) = mpl.colormaps['gist_ncar'](
             0.43+float(node.get_severity())/100*0.42)
         return f"#{int(red*255):02x}{int(green*255):02x}{int(blue*255):02x}"
+
+class NonUniqueLabelException(Exception):
+    pass
