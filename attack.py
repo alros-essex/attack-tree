@@ -12,7 +12,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolba
 from attack_tree import AttackTree, NonUniqueLabelException
 from node import Node
 from form_manager import FormManager
-from file_parser import FileParser
+from file_parser import EmptyFileException, FileParser, ParseException
 from summary import Summary
 
 class Attack:
@@ -141,3 +141,7 @@ if __name__ == "__main__":
             Attack().load_application(sys.argv[1])
         except NonUniqueLabelException:
             print("ERROR: the node IDs must be unique")
+        except ParseException:
+            print(f'ERROR: parse error reading {sys.argv[1]}')
+        except EmptyFileException:
+            print(f'ERROR: {sys.argv[1]} is empty')

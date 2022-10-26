@@ -15,7 +15,7 @@ issues:
       - id: accidental deletion
         description: an employee accidentally deletes data
       - id: SaaS failure
-        description: SaaS provider suffers a major incident
+        description: SaaS provider suffers a major incident or interrupts the operations
   - id: online order is blocked
     description: it becomes impossibile to receive orders online
     children:
@@ -32,3 +32,40 @@ issues:
                     description: the SaaS itself is the target of the attack
                   - id: attack on user
                     description: the users are under attack (e.g. cross-site scripting)
+          - id: technical disruption
+            description: platforms can have periods of downtime, although typically their SLA is in the range of 99.9% or more
+            children:
+              - id: maintenance
+                decription: planned maintenance, rarely impacting the operations
+              - id: malfunction
+                descripion: any kind of failure, including major network disruptions
+  - id: digital fraud
+    description: money loss due to a digital fraud
+    children:
+      - id: phishing
+        description: an employee falls victim of a generalised online fraud
+        children:
+          - id: email phishing
+            description: a fraudolent email is delivered to an employee
+      - id: spearphishing
+        description: targetted attack to an employee
+        children:
+          - id: info online
+            description: an employee has enough information on internet that is possible to craft a customised attack
+          - id: a friend
+            description: the attacker is a person in possession of personal information
+      - id: other channels
+        description: phone calls or other channels trick an employee
+  - id: info theft
+    description: employees' personal data or payment information are stolen
+    children:
+      - id: unpatched vulnerability
+        description: a vulnerability is exploited
+        children:
+          - id: cyberattack
+            description: a cyberattack causes a major disruption
+            children:
+              - id: attack on SaaS
+                description: the SaaS itself is the target of the attack
+              - id: attack on user
+                description: the users are under attack (e.g. cross-site scripting)

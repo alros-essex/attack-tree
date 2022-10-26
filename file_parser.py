@@ -25,12 +25,17 @@ class FileParser:
             with open(file, "r", encoding='UTF8') as stream:
                 try:
                     data = yaml.safe_load(stream)
+                    if data is None:
+                        raise EmptyFileException
                     return self.parse_nodes(data['issues'])
                 except yaml.YAMLError:
                     print(f'error parsing file {file}')
                     return None
+                except TypeError:
+                    print(f'error parsing file {file}')
+                    return None
         except FileNotFoundError:
-            print(f'file {file} was not found')
+            print(f'ERROR: file {file} was not found')
             return None
 
     def parse_nodes(self, issues) -> List[Node]:
@@ -50,8 +55,17 @@ class FileParser:
         nodes = []
         for issue in issues:
             children = self.parse_nodes(issue['children']) if 'children' in issue else []
-            nodes.append(Node(
-                node_id=issue['id'],
-                description=issue['description'],
-                children=children))
+            try:
+                nodes.append(Node(
+                    node_id=issue['id'],
+                    description=issue['description'],
+                    children=children))
+            except Exception as exc:
+                raise ParseException() from exc
         return nodes
+
+class ParseException(Exception):
+    """Parsing error"""
+
+class EmptyFileException(Exception):
+    """The input is empty"""
