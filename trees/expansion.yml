@@ -36,9 +36,9 @@ issues:
             description: platforms can have periods of downtime, although typically their SLA is in the range of 99.9% or more
             children:
               - id: maintenance
-                decription: planned maintenance, rarely impacting the operations
+                description: planned maintenance, rarely impacting the operations
               - id: malfunction
-                descripion: any kind of failure, including major network disruptions
+                description: any kind of failure, including major network disruptions
   - id: digital fraud
     description: money loss due to a digital fraud
     children:
